@@ -1,0 +1,117 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>br.com.juancanuto.api_classifica_demanda</groupId>
+  <artifactId>classifica_demanda</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+
+  <name>poc-dl4j-nlp-client</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>    
+     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+     <java.version>1.8</java.version>        
+  </properties>
+  
+   	<parent>
+    	<groupId>org.springframework.boot</groupId>
+    	<artifactId>spring-boot-starter-parent</artifactId>
+    	<version>2.0.6.RELEASE</version>
+    	<relativePath /> <!-- lookup parent from repository -->
+  	</parent>
+
+  <dependencies>
+   
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>    
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency> 
+        <groupId>org.springframework.boot</groupId>
+    	<artifactId>spring-boot-starter-logging</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+     
+     <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    
+     <!-- https://mvnrepository.com/artifact/org.deeplearning4j/deeplearning4j-nlp -->
+	<dependency>
+    	<groupId>org.deeplearning4j</groupId>
+    	<artifactId>deeplearning4j-nlp</artifactId>
+    	<version>1.0.0-beta4</version>
+	</dependency>	
+	 
+	<!-- https://mvnrepository.com/artifact/org.nd4j/nd4j-native -->
+	<dependency>
+    	<groupId>org.nd4j</groupId>
+    	<artifactId>nd4j-native</artifactId>
+    	<version>1.0.0-beta4</version>    	
+	</dependency>                   
+  </dependencies>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>              			
+              <mainClass>br.com.juancanuto.pocdl4jnlpclient.App</mainClass>
+            </manifest>
+          </archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-my-jar-with-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.7.0</version>
+          <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    </build>  
+  
+</project>

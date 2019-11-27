@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bem vindo</title>
+
+</head>
+<body>
+<script>
+var descricao;
+function submit() {
+descricao = document.getElementById("descricao").value;
+console.log(descricao);
+var ajax = new XMLHttpRequest();
+ajax.open("GET", "http://localhost:8080/api/descricao/classifica?descricao="+descricao, true);
+ajax.send();
+ajax.onreadystatechange = function() {
+	if (ajax.readyState == 4 && ajax.status == 200) {
+		var data = ajax.responseText;
+    // Retorno do Ajax
+		console.log(data);
+		var jsonStr = JSON.stringify(data);
+regeStr = '', // A EMPTY STRING TO EVENTUALLY HOLD THE FORMATTED STRINGIFIED OBJECT
+    f = {
+            brace: 0
+        }; // AN OBJECT FOR TRACKING INCREMENTS/DECREMENTS,
+           // IN PARTICULAR CURLY BRACES (OTHER PROPERTIES COULD BE ADDED)
+
+regeStr = jsonStr.replace(/({|}[,]*|[^{}:]+:[^{}:,]*[,{]*)/g, function (m, p1) {
+var rtnFn = function() {
+        return '<div style="text-indent: ' + (f['brace'] * 20) + 'px;">' + p1 + '</div>';
+    },
+    rtnStr = 0;
+    if (p1.lastIndexOf('{') === (p1.length - 1)) {
+        rtnStr = rtnFn();
+        f['brace'] += 1;
+    } else if (p1.indexOf('}') === 0) {
+         f['brace'] -= 1;
+        rtnStr = rtnFn();
+    } else {
+        rtnStr = rtnFn();
+    }
+    return rtnStr;
+});
+
+document.body.innerHTML += regeStr;
+	}
+}
+}
+
+</script>
+<p>
+<form action="javascript:submit()">
+    <textarea id="descricao"></textarea>
+    <input type="submit">
+</form>
+
+</p>
+
+</body>
+</html>

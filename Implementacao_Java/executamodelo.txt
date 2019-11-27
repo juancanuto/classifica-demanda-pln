@@ -1,0 +1,1 @@
+java -Xmx2g -XX:+UseStringDeduplication -jar poc-dl4j-nlp-1.0.0-jar-with-dependencies.jar -mp C:\Users\jhassam\Documents\project\poc-dl4j-nlp-master\resources\  -mn MODELOS.ZIP -td C:\Users\jhassam\Documents\project\poc-dl4j-nlp-master\resources\classes -te 100
