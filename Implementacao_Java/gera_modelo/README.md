@@ -1,2 +1,2 @@
-# poc-dl4j-nlp
-POC sobre criação de modelo de predição utilizando processamento de linguagem natural. A POC foi desenvolvida utilizando linguagem Java + DeepLearning4J (Funcionalidade de NLP) 
+# gera_modelo
+Criação de modelo de predição utilizando processamento de linguagem natural. O modelo foi desenvolvido utilizando linguagem Java + DeepLearning4J (Funcionalidade de NLP) 
